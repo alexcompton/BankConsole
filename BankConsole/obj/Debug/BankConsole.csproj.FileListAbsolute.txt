@@ -1,0 +1,6 @@
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\BankConsole.exe.config
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\BankConsole.exe
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\BankConsole.pdb
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\obj\Debug\BankConsole.csprojResolveAssemblyReference.cache
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\obj\Debug\BankConsole.exe
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\obj\Debug\BankConsole.pdb
