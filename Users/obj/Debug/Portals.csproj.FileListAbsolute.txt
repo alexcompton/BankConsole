@@ -1,0 +1,7 @@
+C:\Users\alexc_000\Documents\GitHub\BankConsole\Users\bin\Debug\Users.dll
+C:\Users\alexc_000\Documents\GitHub\BankConsole\Users\bin\Debug\Users.pdb
+C:\Users\alexc_000\Documents\GitHub\BankConsole\Users\obj\Debug\Portals.csprojResolveAssemblyReference.cache
+C:\Users\alexc_000\Documents\GitHub\BankConsole\Users\obj\Debug\Users.dll
+C:\Users\alexc_000\Documents\GitHub\BankConsole\Users\obj\Debug\Users.pdb
+C:\Users\alexc_000\Documents\GitHub\BankConsole\Users\bin\Debug\PseudoDatabase.dll
+C:\Users\alexc_000\Documents\GitHub\BankConsole\Users\bin\Debug\PseudoDatabase.pdb

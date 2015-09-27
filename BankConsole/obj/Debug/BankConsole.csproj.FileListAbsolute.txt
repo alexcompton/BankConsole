@@ -4,3 +4,7 @@ C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\BankConsol
 C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\obj\Debug\BankConsole.csprojResolveAssemblyReference.cache
 C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\obj\Debug\BankConsole.exe
 C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\obj\Debug\BankConsole.pdb
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\Users.dll
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\Users.pdb
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\PseudoDatabase.dll
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\PseudoDatabase.pdb
