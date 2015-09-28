@@ -27,7 +27,7 @@ namespace Portals
         /// <returns></returns>
         protected override bool RunPortal()
         {
-            Console.WriteLine("\nWhat would you like to accomplish?" +
+            Console.WriteLine("\nHello " + account.GetUserName() + ", how may I help you?" +
                 "\n\n  1) Get your current balance." +
                 "\n  2) Get you balance at a particular date." +
                 "\n  3) View your last five transactions." +
