@@ -20,6 +20,12 @@ namespace PseudoDatabase
             this.accountDatabase = createDatabase();
         }
 
+        public Dictionary<int, Account> GetData() { return accountDatabase; }
+        public void UpdateAccount(int accountNumber, Account account) 
+        {
+            this.accountDatabase[accountNumber] = account; 
+        }
+
         /// <summary>
         /// this is just to populate the database, its an ugly but quick solution
         /// </summary>
@@ -44,30 +50,31 @@ namespace PseudoDatabase
             {
                 count++;
                 transactionHistory = getHistory();
-                accountDatabase.Add(count, new Account(customer, (decimal)1.22, Currency.Dollar, transactionHistory));
+                accountDatabase.Add(count, new Account(customer, Currency.Dollar, transactionHistory));
             }
 
             return accountDatabase;
         }
 
         /// <summary>
-        /// create a fake history for each customer
+        /// create a fake history for each customer this is a little convoluted to create all the fake data
         /// </summary>
         /// <returns></returns>
         private SortedDictionary<DateTime, Trasaction> getHistory()
         {
             SortedDictionary<DateTime, Trasaction> transactionHistory = new SortedDictionary<DateTime, Trasaction>();
-            Random random = new Random();
-            decimal startingAmmount = random.Next(1000,10000);
 
+            // create a pseudo transaction history
             while(transactionHistory.Count < 10)
             {
+                Random random = new Random();
+                decimal startingAmmount = random.Next(10000, 150000);
                 int year = random.Next(1980, 2015);
                 int month = random.Next(1, 12);
                 int day = random.Next(1, 28);
                 DateTime date = new DateTime(year,month,day);
                 int transType = random.Next(1, 4);
-                int ammount = random.Next(1, 1000);
+                int ammount = random.Next(1, 5000);
 
                 if(!transactionHistory.ContainsKey(date))
                 {
@@ -75,6 +82,7 @@ namespace PseudoDatabase
                 }
             }
 
+            // clean up transactions so that they calculate correctly
             for(int i = 0; i < 10; i++)
             {
                 if(i > 0)
@@ -95,6 +103,68 @@ namespace PseudoDatabase
             }
 
             return transactionHistory;
+        }
+
+        /// <summary>
+        /// this returns quick list of the top accounts given an input
+        /// </summary>
+        /// <param name="numberOfAccounts"></param>
+        /// <returns></returns>
+        public string PrintBottomAccounts(int numberOfAccounts)
+        {
+            StringBuilder text = new StringBuilder(String.Format("List of the top {0} with the largest balances:\n", numberOfAccounts));            
+
+            // this gets a sortable list that we can use to make our string
+            List<QuickBalance> quickList = GetQuickListForSort();
+            quickList.Sort((a, b) => a.GetBalance().CompareTo(b.GetBalance()));
+
+            // add strings for each top account requested
+            for(int i = 0; i < numberOfAccounts; i++)
+            {
+                text.AppendLine(quickList.ElementAt(i).GetAccountInfo());
+            }
+
+            return text.ToString();
+        }
+
+        /// <summary>
+        /// this returns quick list of the bottom accounts given an input
+        /// </summary>
+        /// <param name="numberOfAccounts"></param>
+        /// <returns></returns>
+        public string PrintTopAccounts(int numberOfAccounts)
+        {
+            StringBuilder text = new StringBuilder(String.Format("List of the top {0} with the largest balances:\n", numberOfAccounts));
+
+            // this gets a sortable list that we can use to make our string
+            List<QuickBalance> quickList = GetQuickListForSort();
+            quickList.Sort((a, b) => a.GetBalance().CompareTo(b.GetBalance()));
+            quickList.Reverse();
+            
+            // add strings for each top account requested
+            for (int i = 0; i < numberOfAccounts; i++)
+            {
+                text.AppendLine(quickList.ElementAt(i).GetAccountInfo());
+            }
+
+            return text.ToString();
+        }
+
+        /// <summary>
+        /// gets a quick list of of the customers sorted by account balance
+        /// </summary>
+        /// <returns>List<QuickBalance></returns>
+        private List<QuickBalance> GetQuickListForSort()
+        {
+            List<QuickBalance> quickList = new List<QuickBalance>();
+
+            // add each item to your new list
+            foreach (KeyValuePair<int, Account> account in accountDatabase)
+            {
+                quickList.Add(new QuickBalance(account.Value.GetBalance(), account.Value.PrintBalance()));
+            }
+            
+            return quickList;
         }
     }
 }

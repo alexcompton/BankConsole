@@ -6,20 +6,6 @@ using System.Threading.Tasks;
 
 namespace PseudoDatabase
 {
-    public enum TransactionType
-    {
-        Withdrawl,
-        Deposit,
-        RecieveFromAccount,
-        SendToAccount
-    }
-
-    public enum Currency
-    {
-        Dollar,
-        Euro
-    }
-
     public class Account
     {
         private string userName;
@@ -27,44 +13,97 @@ namespace PseudoDatabase
         private Currency currency;
         private SortedDictionary<DateTime, Trasaction> transactionHistory;
 
-        public Account(string userName, decimal balance, Currency currency, SortedDictionary<DateTime, Trasaction> transactionHistory)
+        public Account(string userName, Currency currency, SortedDictionary<DateTime, Trasaction> transactionHistory)
         {
             this.userName = userName;
-            this.balance = balance;
             this.currency = currency;
             this.transactionHistory = transactionHistory;
+            this.balance = transactionHistory.Last().Value.GetBalance();
         }
 
+        /// <summary>
+        /// this is used for any time people want the current balance
+        /// </summary>
+        /// <returns>decimal balance</returns>
+        public decimal GetBalance() { return balance; }
         public string GetUserName(){return userName;}
-        public decimal GetBalance(){return balance;}
         public Currency GetCurrency(){return currency;}
         public SortedDictionary<DateTime, Trasaction> GetTransactionHistory() {return transactionHistory;}
-    }
 
-    public class Trasaction
-    {
-        private decimal balance;
-        private decimal ammount;
-        private TransactionType transactionType;
-        private Currency currency;
-
-        public Trasaction(decimal balance, decimal ammount, TransactionType transactionType, Currency currency)
-        {
-            this.balance = balance;
-            this.ammount = ammount;
-            this.transactionType = transactionType;
-            this.currency = currency;
+        /// <summary>
+        /// this is used for any time people want the current balance
+        /// </summary>
+        /// <returns>String balance</returns>
+        public String PrintBalance() 
+        { 
+            return "\n  Customer:\t" + GetUserName()
+                + "\n  Balance:\t" + Money.PrintCurrency(Currency.Dollar, this.balance)
+                + "\n\n"; 
         }
 
-        public decimal GetBalance(){ return balance; }
-        public decimal GetAmmount(){ return ammount; }
-        public TransactionType GetTransactionType(){ return transactionType; }
-        public Currency GetCurrency(){ return currency; }
-        
-        // only the database constructor should use this
-        internal void SetBalance(decimal newBalance) 
+        /// <summary>
+        /// this is used for any time people want the balance at a given time
+        /// </summary>
+        /// <param name="date">Date</param>
+        /// <returns>String</returns>
+        public String PrintBalance(DateTime date)
         {
-            balance = newBalance;
+            return "\n  Customer:\t" + GetUserName()
+                + "\n  Balance:\t" + Money.PrintCurrency(Currency.Dollar, GetBalance(date))
+                + "\n  Date:   \t" + date.ToShortDateString()
+                + "\n\n";
+        }
+
+        /// <summary>
+        /// gets the user balance for a certain date
+        /// </summary>
+        /// <param name="date">Date</param>
+        /// <returns>decimal</returns>
+        private decimal GetBalance(DateTime date)
+        {
+            // this will be returned
+            decimal userBalance = this.balance;
+            int count = transactionHistory.Count;
+
+            // iterate through the transaction history untill you find the correct balance
+            for(int i = (count - 1); i >= 0; i--)
+            {
+                userBalance = transactionHistory.ElementAt(i).Value.GetBalance();
+
+                if (DateTime.Compare(transactionHistory.ElementAt(i).Key, date) < 0)
+                {
+                    return userBalance;
+                }
+            }
+
+            return userBalance;
+        }
+
+        public string PrintLastTransactions(int numberOfTransactions)
+        {
+            // just some string formatting
+            StringBuilder text = new StringBuilder();
+            text.Append(GetUserName());
+            text.Append("'s last ");
+            text.Append(numberOfTransactions.ToString());
+            text.AppendLine(" transactions are as follows...");
+
+            int count = transactionHistory.Count;
+
+            // iterate through the transaction for the given number of times
+            for (int i = (count - 1); i >= 0; i--)
+            {
+                text.Append("\n  Date:   \t").AppendLine(transactionHistory.ElementAt(i).Key.ToShortDateString());
+                text.AppendLine(transactionHistory.ElementAt(i).Value.PrintTransaction());
+                numberOfTransactions--;
+
+                if (numberOfTransactions <= 0)
+                {
+                    return text.ToString();
+                }
+            }
+
+            return text.ToString();
         }
     }
 }

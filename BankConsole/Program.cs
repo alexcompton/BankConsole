@@ -10,8 +10,12 @@ namespace BankConsole
     {
         static void Main(string[] args)
         {
+            // this will allow the greeter to have a local version of the constructed database
+            // this would really be in a database for now its stored locally
+            Greeter greeter = new Greeter();
+
             // this will run the program indefintely until the user prompts the exit sequence
-            while (Greeter.RunProgram()) { }
+            while (greeter.RunProgram()) { }
 
             Console.WriteLine("\n\nGood-Bye...");
             Console.ReadKey();

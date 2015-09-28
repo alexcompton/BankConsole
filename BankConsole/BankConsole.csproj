@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PseudoDatabase\PseudoDatabase.csproj">
+      <Project>{53ee826b-cf32-4898-a146-0574c93a118d}</Project>
+      <Name>PseudoDatabase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Users\Portals.csproj">
       <Project>{84e31a49-5c18-43ab-abde-0db74396d241}</Project>
       <Name>Portals</Name>
