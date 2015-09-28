@@ -8,3 +8,5 @@ C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\Users.dll
 C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\Users.pdb
 C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\PseudoDatabase.dll
 C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\PseudoDatabase.pdb
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\Newtonsoft.Json.dll
+C:\Users\alexc_000\Documents\GitHub\BankConsole\BankConsole\bin\Debug\Newtonsoft.Json.xml

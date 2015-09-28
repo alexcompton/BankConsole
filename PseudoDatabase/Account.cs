@@ -37,8 +37,20 @@ namespace PseudoDatabase
         public String PrintBalance() 
         { 
             return "\n  Customer:\t" + GetUserName()
-                + "\n  Balance:\t" + Money.PrintCurrency(Currency.Dollar, this.balance)
+                + "\n  Balance:\t" + Money.PrintCurrency(Currency.USD, this.balance)
                 + "\n\n"; 
+        }
+
+        /// <summary>
+        /// this is used for any time people want the current balance, given a currency
+        /// </summary>
+        /// <param name="currency"></param>
+        /// <returns>String</returns>
+        public String PrintBalance(Currency currency)
+        {
+            return "\n  Customer:\t" + GetUserName()
+                + "\n  Balance:\t" + Money.PrintCurrency(currency, this.balance)
+                + "\n\n";
         }
 
         /// <summary>
@@ -49,7 +61,7 @@ namespace PseudoDatabase
         public String PrintBalance(DateTime date)
         {
             return "\n  Customer:\t" + GetUserName()
-                + "\n  Balance:\t" + Money.PrintCurrency(Currency.Dollar, GetBalance(date))
+                + "\n  Balance:\t" + Money.PrintCurrency(Currency.USD, GetBalance(date))
                 + "\n  Date:   \t" + date.ToShortDateString()
                 + "\n\n";
         }

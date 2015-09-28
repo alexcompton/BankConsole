@@ -3,3 +3,5 @@ C:\Users\alexc_000\Documents\GitHub\BankConsole\PseudoDatabase\bin\Debug\PseudoD
 C:\Users\alexc_000\Documents\GitHub\BankConsole\PseudoDatabase\obj\Debug\PseudoDatabase.csprojResolveAssemblyReference.cache
 C:\Users\alexc_000\Documents\GitHub\BankConsole\PseudoDatabase\obj\Debug\PseudoDatabase.dll
 C:\Users\alexc_000\Documents\GitHub\BankConsole\PseudoDatabase\obj\Debug\PseudoDatabase.pdb
+C:\Users\alexc_000\Documents\GitHub\BankConsole\PseudoDatabase\bin\Debug\Newtonsoft.Json.dll
+C:\Users\alexc_000\Documents\GitHub\BankConsole\PseudoDatabase\bin\Debug\Newtonsoft.Json.xml

@@ -50,7 +50,7 @@ namespace PseudoDatabase
             {
                 count++;
                 transactionHistory = getHistory();
-                accountDatabase.Add(count, new Account(customer, Currency.Dollar, transactionHistory));
+                accountDatabase.Add(count, new Account(customer, Currency.USD, transactionHistory));
             }
 
             return accountDatabase;
@@ -78,7 +78,7 @@ namespace PseudoDatabase
 
                 if(!transactionHistory.ContainsKey(date))
                 {
-                    transactionHistory.Add(date, new Trasaction(startingAmmount, ammount, (TransactionType)transType, Currency.Dollar));
+                    transactionHistory.Add(date, new Trasaction(startingAmmount, ammount, (TransactionType)transType, Currency.USD));
                 }
             }
 

@@ -12,6 +12,7 @@ namespace BankConsole
         {
             // this will allow the greeter to have a local version of the constructed database
             // this would really be in a database for now its stored locally
+            Console.WriteLine("Setting up the psuedo-database...");
             Greeter greeter = new Greeter();
 
             // this will run the program indefintely until the user prompts the exit sequence

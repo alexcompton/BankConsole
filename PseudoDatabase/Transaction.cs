@@ -50,8 +50,8 @@ namespace PseudoDatabase
                 str = "+";
             }
 
-            return "  Balance:\t" + Money.PrintCurrency(Currency.Dollar,this.balance)
-                + "\n  Ammount:\t" + str + Money.PrintCurrency(Currency.Dollar, this.ammount)
+            return "  Balance:\t" + Money.PrintCurrency(Currency.USD,this.balance)
+                + "\n  Ammount:\t" + str + Money.PrintCurrency(Currency.USD, this.ammount)
                 + "\n  Type:   \t" + GetTransactionType().ToString();
         }       
     }
