@@ -33,6 +33,7 @@ namespace Portals
                 "\n  5) Get a list of the five customers with the smallest balance." +
                 "\n  6) Exit.\n");
             ConsoleKeyInfo userInput = Console.ReadKey();
+            Console.WriteLine();
 
             try
             {
@@ -45,7 +46,7 @@ namespace Portals
                         GetBalanceAtDate();
                         return true;
                     case 3:
-                        GetLastTransactions(5);
+                        GetLastTransactions();
                         return true;
                     case 4:
                         GetTopProducerList();
@@ -90,8 +91,10 @@ namespace Portals
         /// it can display how ever many you might need
         /// </summary>
         /// <param name="numberOfTransactions">Int</param>
-        protected override void GetLastTransactions(int numberOfTransactions)
+        protected override void GetLastTransactions()
         {
+            int numberOfTransactions = 5;
+
             // get the account number
             int accountNumber = GetAccountInfo();
             if (accountNumber == 0) return;
@@ -126,7 +129,7 @@ namespace Portals
         {
             // this will hold the new account number
             int accountNumber = 0;
-            Console.WriteLine("\n\nWhat is the number of the account you would like to access?\n"
+            Console.WriteLine("\nWhat is the number of the account you would like to access?\n"
                 + "(Hint: 10001 - 10050)\n");
             string userInput = Console.ReadLine();
 
@@ -166,37 +169,5 @@ namespace Portals
             Console.WriteLine("\nAccount balance for account number: " + accountNumber + "\n"
                 + pseudoDatabase.GetData()[accountNumber].PrintBalance(date));
         }
-
-        ///// <summary>
-        ///// gets the date from a user input
-        ///// </summary>
-        ///// <returns></returns>
-        //private DateTime GetDateFromUser(int accountNumber)
-        //{
-        //    // get the date from the user
-        //    DateTime date = new DateTime(1980,1,1);
-        //    Console.WriteLine("\nPlease enter a date in the following format MM/DD/YYYY." 
-        //        + "\nThis will retrieve the balance on that date for account number: " + accountNumber
-        //        + "\n(Hint: Our bank was founded 1/1/1980)\n");
-        //    string userInput = Console.ReadLine();
-
-        //    try
-        //    {
-        //        string[] dateArray = userInput.Split('/');
-        //        date = new DateTime(int.Parse(dateArray[2]), int.Parse(dateArray[0]), int.Parse(dateArray[1]));
-
-        //        if (DateTime.Compare(date, new DateTime(1980, 1, 1)) < 0)
-        //        {
-        //            date = new DateTime(1980, 1, 1);
-        //            Console.WriteLine("\nOur bank was founded in 1/1/1980.\nYour selection is invalid,  please try again...");
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        Console.WriteLine("\nCouldn't process your selection, please try again...");
-        //    }
-
-        //    return date;
-        //}
     }
 }

@@ -20,7 +20,7 @@ namespace Portals
         abstract protected bool RunPortal();
         abstract protected void GetBalanceAtDate();
         abstract protected void GetCurrentBalance();
-        abstract protected void GetLastTransactions(int numberOfTransactions);
+        abstract protected void GetLastTransactions();
 
         /// <summary>
         /// gets the date from a user input
